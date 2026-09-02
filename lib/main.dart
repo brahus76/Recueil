@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/router/app_router.dart';
+import 'core/theme/app_theme.dart';
 
 void main(){
   runApp(
-      const RecueilApp()
+      const ProviderScope(child: RecueilApp())
   );
 }
 class RecueilApp extends StatelessWidget{
@@ -10,16 +13,11 @@ class RecueilApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Recueil"),
-        ),
-        body: Center(
-          child: const Text("Recueil - en Instruction"),
-        ),
-      ),
+      theme: AppTheme.light,
+      title: "Recueil",
+      routerConfig: appRouter,
     );
   }
 }
